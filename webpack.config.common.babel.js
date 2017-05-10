@@ -36,8 +36,18 @@ module.exports = new WebpackConfig().merge({
     }),
     new HtmlWebpackPlugin({
       title: 'Starter Theme',
-      template: 'index.ejs',
+      template: 'index.html',
       inject: 'body'
+  }),
+    new webpack.ProvidePlugin({
+      jQuery: 'jquery',
+      $: 'jquery',
+      jquery: 'jquery'
     })
-  ]
+  ],
+  resolve: {
+    alias: {
+      jquery: "jquery/src/jquery"
+    }
+  }
 })
