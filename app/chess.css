@@ -1,20 +1,25 @@
+div {
+	font-size: 7vw;
+	text-align: center;
+	vertical-align: middle;
+	}
 .row {
-    width: 720px;
-    height: 90px;
-    background-color: #333333;
+    width: 80vw;
+    height: 10vw;
+    background-color: #999999;
     border-color: #fff;
 }
 .column {
-    width: 90px;
-    height: 90px;
-    /*background-color: green;*/
+    width: 10vw;
+    height: 10vw;
+    /*background-color: #bada55;*/
     display: inline-block;
 }
 .white-cell {
-	background-color: #dddddd;
+	background-color: #eeeeee;
 }
 #master-div {
-	width: 720px;
-	height: 720px;
+	width: 80vw;
+	height: 80vw;
 	border: 2px solid black;
 }

@@ -1,16 +1,49 @@
+import Rook from './rook';
+
 require('./chess.css');
 require('./piece');
+
 const $ = require('jquery');
 
 const boardState = [
-	new Array(8),
-	new Array(8),
-	new Array(8),
-	new Array(8),
-	new Array(8),
-	new Array(8),
-	new Array(8),
-	new Array(8)
+	[new Rook(0, 0, 'black'),
+		[],
+		[],
+		[],
+		[],
+		[],
+		[],
+		new Rook(0, 7, 'black')],
+	// [new Pawn(1, 0, 'black'),
+	// 	new Pawn(1, 1, 'black'),
+	// 	new Pawn(1, 2, 'black'),
+	// 	new Pawn(1, 3, 'black'),
+	// 	new Pawn(1, 4, 'black'),
+	// 	new Pawn(1, 5, 'black'),
+	// 	new Pawn(1, 6, 'black'),
+	// 	new Pawn(1, 7, 'black')],
+	[new Array(8)],
+	[new Array(8)],
+	[new Array(8)],
+	[new Array(8)],
+	[new Array(8)],
+	[new Array(8)],
+	// [new Pawn(6, 0, 'white'),
+	// 	new Pawn(6, 1, 'white'),
+	// 	new Pawn(6, 2, 'white'),
+	// 	new Pawn(6, 3, 'white'),
+	// 	new Pawn(6, 4, 'white'),
+	// 	new Pawn(6, 5, 'white'),
+	// 	new Pawn(6, 6, 'white'),
+	// 	new Pawn(6, 7, 'white')],
+	[new Rook(0, 0, 'white'),
+		[],
+		[],
+		[],
+		[],
+		[],
+		[],
+		new Rook(0, 7, 'white')],,
 ];
 
 function addRow(i) {
@@ -33,6 +66,9 @@ function buildBoard() {
 		addRow(i);
 		for (let j = 0; j < 8; j++) {
 			addColumn(i, j);
+			if (boardState[i][j]) {
+				$(`#${i}${j}`).html(String.fromCharCode(parseInt(boardState[i][j].image, 16)));
+			}
 		}
 	}
 }
