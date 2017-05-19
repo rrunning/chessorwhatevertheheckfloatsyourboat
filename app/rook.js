@@ -7,4 +7,5 @@ export default class Rook extends Piece {
 	}
 }
 
+
 // movement - find targets, highlight potential moves
