@@ -21,7 +21,7 @@ export default class Rook extends Piece {
 			}
 		}
 		for (let i = this.row - 1; i >= 0; i--) {
-			if (!HelperFunctions.isEmpty) {
+			if (!HelperFunctions.isEmpty(i, this.col)) {
 				isEnemy(this.color);
 			}
 			else {
