@@ -41,7 +41,12 @@ function setup() {
 setup();
 
 $('.column').click(function () {
-	const chosenPiece = BoardState.state[$(this).attr('id')[0]][$(this).attr('id')[1]];
-	$(this).addClass('lighty-uppy-piece');
-	chosenPiece.getTargetCoordinates();
+	const clickedCell = BoardState.state[$(this).attr('id')[0]][$(this).attr('id')[1]];
+	if (clickedCell) {
+		const chosenPiece = clickedCell;
+		chosenPiece.getTargetCoordinates();
+		$(this).addClass('lighty-uppy-piece');
+	} else {
+		// nothing
+	}
 });
