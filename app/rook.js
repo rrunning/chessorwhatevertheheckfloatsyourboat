@@ -15,59 +15,51 @@ export default class Rook extends Piece {
 		for (let i = this.row + 1; i <= 7; i++) {
 			if (!HelperFunctions.isEmpty(i, this.col)) {
 				this.isEnemy(i, this.col);
-			}
-			else {
-				if (HelperFunctions.isEmpty(i, this.col)) {
-					potentialMoves.push({
-						row: i,
-						col: this.col
-					});
-				}
+			} else {
+				potentialMoves.push({
+					row: i,
+					col: this.col
+				});
 			}
 		}
 		for (let i = this.row - 1; i >= 0; i--) {
 			if (!HelperFunctions.isEmpty(i, this.col)) {
 				this.isEnemy(i, this.col);
-			}
-			else {
-				if (HelperFunctions.isEmpty(i, this.col)) {
-					potentialMoves.push({
-						row: i,
-						col: this.col
-					});
-				}
+			} else {
+				potentialMoves.push({
+					row: i,
+					col: this.col
+				});
 			}
 		}
 		for (let i = this.col - 1; i >= 0; i--) {
 			if (!HelperFunctions.isEmpty(this.row, i)) {
-				this.isEnemy(i, this.col);
-			}
-			else {
-				if (HelperFunctions.isEmpty(this.row, i)) {
-					potentialMoves.push({
-						row: this.row,
-						col: i
-					});
-				}
+				this.isEnemy(this.row, i);
+			} else {
+				potentialMoves.push({
+					row: this.row,
+					col: i
+				});
 			}
 		}
 		for (let i = this.col + 1; i <= 7; i++) {
 			if (!HelperFunctions.isEmpty(this.row, i)) {
-				this.isEnemy(i, this.col);
-			}
-			else {
-				if (HelperFunctions.isEmpty(this.row, i)) {
-					potentialMoves.push({
-						row: this.row,
-						col: i
-					});
-				}
+				this.isEnemy(this.row, i);
+			} else {
+				potentialMoves.push({
+					row: this.row,
+					col: i
+				});
 			}
 		}
 		console.log(potentialMoves);
+		this.highlightMoves(potentialMoves);
 	}
 	isEnemy(row, col) {
 		const foo = BoardState.state[row][col];
 		return foo.color !== this.color;
+	}
+	highlightMoves(potentialMoves) {
+		potentialMoves.foreach((potentialMove) => { $(`${potentialMove.row}${potentialMove.col}`).addClass(highlightMoves); });
 	}
 }
