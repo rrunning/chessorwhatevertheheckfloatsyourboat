@@ -9,8 +9,8 @@ export default class HelperFunctions {
 			document.getElementById(`${potentialMove.row}${potentialMove.col}`).classList.add('highlight-moves');
 		});
 	}
-	static isEnemy(row, col) {
+	static isEnemy(row, col, color) {
 		const foo = BoardState.state[row][col];
-		return foo.color !== this.color;
+		return foo.color !== color;
 	}
 }

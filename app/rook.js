@@ -12,43 +12,67 @@ export default class Rook extends Piece {
 	genCoordinates() {
 		const potentialMoves = [];
 		for (let i = this.row + 1; i <= 7; i++) {
-			if (!HelperFunctions.isEmpty(i, this.col)) {
-				HelperFunctions.isEnemy(i, this.col);
-			} else {
+			if (HelperFunctions.isEmpty(i, this.col)) {
 				potentialMoves.push({
 					row: i,
 					col: this.col
 				});
+			} else if (HelperFunctions.isEnemy(i, this.col, this.color)) {
+				potentialMoves.push({
+					row: i,
+					col: this.col
+				});
+				break;
+			} else {
+				break;
 			}
 		}
 		for (let i = this.row - 1; i >= 0; i--) {
-			if (!HelperFunctions.isEmpty(i, this.col)) {
-				HelperFunctions.isEnemy(i, this.col);
-			} else {
+			if (HelperFunctions.isEmpty(i, this.col)) {
 				potentialMoves.push({
 					row: i,
 					col: this.col
 				});
+			} else if (HelperFunctions.isEnemy(i, this.col, this.color)) {
+				potentialMoves.push({
+					row: i,
+					col: this.col
+				});
+				break;
+			} else {
+				break;
 			}
 		}
 		for (let i = this.col - 1; i >= 0; i--) {
-			if (!HelperFunctions.isEmpty(this.row, i)) {
-				HelperFunctions.isEnemy(this.row, i);
-			} else {
+			if (HelperFunctions.isEmpty(this.row, i)) {
 				potentialMoves.push({
 					row: this.row,
 					col: i
 				});
+			} else if (HelperFunctions.isEnemy(this.row, i, this.color)) {
+				potentialMoves.push({
+					row: this.row,
+					col: i
+				});
+				break;
+			} else {
+				break;
 			}
 		}
 		for (let i = this.col + 1; i <= 7; i++) {
-			if (!HelperFunctions.isEmpty(this.row, i)) {
-				HelperFunctions.isEnemy(this.row, i);
-			} else {
+			if (HelperFunctions.isEmpty(this.row, i)) {
 				potentialMoves.push({
 					row: this.row,
 					col: i
 				});
+			} else if (HelperFunctions.isEnemy(this.row, i, this.color)) {
+				potentialMoves.push({
+					row: this.row,
+					col: i
+				});
+				break;
+			} else {
+				break;
 			}
 		}
 		console.log(potentialMoves);
