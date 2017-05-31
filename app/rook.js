@@ -1,5 +1,4 @@
 import Piece from './piece';
-import BoardState from './boardstate';
 import HelperFunctions from './helper-functions';
 
 export default class Rook extends Piece {
@@ -14,7 +13,7 @@ export default class Rook extends Piece {
 		const potentialMoves = [];
 		for (let i = this.row + 1; i <= 7; i++) {
 			if (!HelperFunctions.isEmpty(i, this.col)) {
-				this.isEnemy(i, this.col);
+				HelperFunctions.isEnemy(i, this.col);
 			} else {
 				potentialMoves.push({
 					row: i,
@@ -24,7 +23,7 @@ export default class Rook extends Piece {
 		}
 		for (let i = this.row - 1; i >= 0; i--) {
 			if (!HelperFunctions.isEmpty(i, this.col)) {
-				this.isEnemy(i, this.col);
+				HelperFunctions.isEnemy(i, this.col);
 			} else {
 				potentialMoves.push({
 					row: i,
@@ -34,7 +33,7 @@ export default class Rook extends Piece {
 		}
 		for (let i = this.col - 1; i >= 0; i--) {
 			if (!HelperFunctions.isEmpty(this.row, i)) {
-				this.isEnemy(this.row, i);
+				HelperFunctions.isEnemy(this.row, i);
 			} else {
 				potentialMoves.push({
 					row: this.row,
@@ -44,7 +43,7 @@ export default class Rook extends Piece {
 		}
 		for (let i = this.col + 1; i <= 7; i++) {
 			if (!HelperFunctions.isEmpty(this.row, i)) {
-				this.isEnemy(this.row, i);
+				HelperFunctions.isEnemy(this.row, i);
 			} else {
 				potentialMoves.push({
 					row: this.row,
@@ -53,13 +52,6 @@ export default class Rook extends Piece {
 			}
 		}
 		console.log(potentialMoves);
-		this.highlightMoves(potentialMoves);
-	}
-	isEnemy(row, col) {
-		const foo = BoardState.state[row][col];
-		return foo.color !== this.color;
-	}
-	highlightMoves(potentialMoves) {
-		potentialMoves.foreach((potentialMove) => { $(`${potentialMove.row}${potentialMove.col}`).addClass(highlightMoves); });
+		HelperFunctions.highlightMoves(potentialMoves);
 	}
 }
