@@ -13,4 +13,10 @@ export default class HelperFunctions {
 		const foo = BoardState.state[row][col];
 		return foo.color !== color;
 	}
+	static addToPotentialMoves(potentialMoves, row, col) {
+		potentialMoves.push({
+			row,
+			col,
+		});
+	}
 }

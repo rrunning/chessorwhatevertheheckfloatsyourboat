@@ -13,15 +13,9 @@ export default class Rook extends Piece {
 		const potentialMoves = [];
 		for (let i = this.row + 1; i <= 7; i++) {
 			if (HelperFunctions.isEmpty(i, this.col)) {
-				potentialMoves.push({
-					row: i,
-					col: this.col
-				});
+				HelperFunctions.addToPotentialMoves(potentialMoves, i, this.col);
 			} else if (HelperFunctions.isEnemy(i, this.col, this.color)) {
-				potentialMoves.push({
-					row: i,
-					col: this.col
-				});
+				HelperFunctions.addToPotentialMoves(potentialMoves, i, this.col);
 				break;
 			} else {
 				break;
@@ -29,15 +23,9 @@ export default class Rook extends Piece {
 		}
 		for (let i = this.row - 1; i >= 0; i--) {
 			if (HelperFunctions.isEmpty(i, this.col)) {
-				potentialMoves.push({
-					row: i,
-					col: this.col
-				});
+				HelperFunctions.addToPotentialMoves(potentialMoves, i, this.col);
 			} else if (HelperFunctions.isEnemy(i, this.col, this.color)) {
-				potentialMoves.push({
-					row: i,
-					col: this.col
-				});
+				HelperFunctions.addToPotentialMoves(potentialMoves, i, this.col);
 				break;
 			} else {
 				break;
@@ -45,10 +33,7 @@ export default class Rook extends Piece {
 		}
 		for (let i = this.col - 1; i >= 0; i--) {
 			if (HelperFunctions.isEmpty(this.row, i)) {
-				potentialMoves.push({
-					row: this.row,
-					col: i
-				});
+				HelperFunctions.addToPotentialMoves(potentialMoves, this.row, i);
 			} else if (HelperFunctions.isEnemy(this.row, i, this.color)) {
 				potentialMoves.push({
 					row: this.row,
@@ -61,15 +46,9 @@ export default class Rook extends Piece {
 		}
 		for (let i = this.col + 1; i <= 7; i++) {
 			if (HelperFunctions.isEmpty(this.row, i)) {
-				potentialMoves.push({
-					row: this.row,
-					col: i
-				});
+				HelperFunctions.addToPotentialMoves(potentialMoves, this.row, i);
 			} else if (HelperFunctions.isEnemy(this.row, i, this.color)) {
-				potentialMoves.push({
-					row: this.row,
-					col: i
-				});
+				HelperFunctions.addToPotentialMoves(potentialMoves, this.row, i);
 				break;
 			} else {
 				break;
