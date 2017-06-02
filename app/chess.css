@@ -24,5 +24,8 @@ div {
 	border: 2px solid black;
 }
 .lighty-uppy-piece {
-	background-color: #fb1;
+	box-shadow: inset 0 0 0 3px #fb1;
+}
+.highlight-moves {
+	box-shadow: inset 0 0 0 3px #B0061E;
 }
