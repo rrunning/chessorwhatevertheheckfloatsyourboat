@@ -60,5 +60,10 @@ const $ = require('jquery');
 	function resetTurn() {
 		clickedCell = null;
 		chosenPiece = null;
+		removeHighlights();
+	}
+	function removeHighlights() {
+		$('.highlight-moves').removeClass('highlight-moves');
+		$('.lighty-uppy-piece').removeClass('lighty-uppy-piece');
 	}
 })();

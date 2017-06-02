@@ -27,10 +27,8 @@ export default class HelperFunctions {
 			this.movePieceDOM(piece, trgtRow, trgtCol);
 			this.movePieceBS(piece, trgtRow, trgtCol);
 			console.log(BoardState.state);
-			return true;
 		} else {
 			alert("This doesn't work");
-			return false;
 		}
 	}
 	static movePieceBS(piece, trgtRow, trgtCol) {
@@ -43,6 +41,5 @@ export default class HelperFunctions {
 		const imgLocation = document.getElementById(`${piece.row}${piece.col}`).innerHTML;
 		document.getElementById(`${piece.row}${piece.col}`).innerHTML = '';
 		document.getElementById(`${trgtRow}${trgtCol}`).innerHTML = imgLocation;
-		// removeHighlights();
 	}
 }
