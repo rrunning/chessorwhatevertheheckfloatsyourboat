@@ -54,6 +54,11 @@ const $ = require('jquery');
 			// chosenPiece should be defined and we're now checking for a space to move to.
 			clickedCell = $(this).attr('id');
 			HelperFunctions.movePiece(chosenPiece, Number(clickedCell[0]), Number(clickedCell[1]));
+			resetTurn();
 		}
 	});
+	function resetTurn() {
+		clickedCell = null;
+		chosenPiece = null;
+	}
 })();

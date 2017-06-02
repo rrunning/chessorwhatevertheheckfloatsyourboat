@@ -24,6 +24,7 @@ export default class HelperFunctions {
 	}
 	static movePiece(piece, trgtRow, trgtCol) {
 		if (this.isHighlighted(trgtRow, trgtCol)) {
+			this.movePieceDOM(piece, trgtRow, trgtCol);
 			this.movePieceBS(piece, trgtRow, trgtCol);
 			console.log(BoardState.state);
 			return true;
@@ -37,5 +38,11 @@ export default class HelperFunctions {
 		BoardState.state[trgtRow][trgtCol] = piece;
 		piece.row = trgtRow;
 		piece.col = trgtCol;
+	}
+	static movePieceDOM(piece, trgtRow, trgtCol) {
+		const imgLocation = document.getElementById(`${piece.row}${piece.col}`).innerHTML;
+		document.getElementById(`${piece.row}${piece.col}`).innerHTML = '';
+		document.getElementById(`${trgtRow}${trgtCol}`).innerHTML = imgLocation;
+		// removeHighlights();
 	}
 }
