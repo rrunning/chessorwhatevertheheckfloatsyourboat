@@ -19,4 +19,23 @@ export default class HelperFunctions {
 			col,
 		});
 	}
+	static isHighlighted(targetRow, targetCol) {
+		return document.getElementById(`${targetRow}${targetCol}`).classList.contains('highlight-moves');
+	}
+	static movePiece(piece, trgtRow, trgtCol) {
+		if (this.isHighlighted(trgtRow, trgtCol)) {
+			this.movePieceBS(piece, trgtRow, trgtCol);
+			console.log(BoardState.state);
+			return true;
+		} else {
+			alert("This doesn't work");
+			return false;
+		}
+	}
+	static movePieceBS(piece, trgtRow, trgtCol) {
+		BoardState.state[piece.row][piece.col] = null;
+		BoardState.state[trgtRow][trgtCol] = piece;
+		piece.row = trgtRow;
+		piece.col = trgtCol;
+	}
 }
