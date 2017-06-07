@@ -9,6 +9,7 @@ const $ = require('jquery');
 (() => {
 	let chosenPiece = null;
 	let clickedCell = null;
+	let turn = 'white';
 
 	function addRow(i) {
 		const newDiv = $('<div>', {
@@ -48,19 +49,28 @@ const $ = require('jquery');
 	$('.column').click(function () {
 		if (!chosenPiece) {
 			chosenPiece = BoardState.state[$(this).attr('id')[0]][$(this).attr('id')[1]];
-			chosenPiece.getTargetCoordinates();
-			$(this).addClass('lighty-uppy-piece');
+			if (chosenPiece.color === turn) {
+				chosenPiece.getTargetCoordinates();
+				$(this).addClass('lighty-uppy-piece');
+			} else {
+				resetTurn();
+			}
 		} else {
 			// chosenPiece should be defined and we're now checking for a space to move to.
 			clickedCell = $(this).attr('id');
 			HelperFunctions.movePiece(chosenPiece, Number(clickedCell[0]), Number(clickedCell[1]));
 			resetTurn();
+			changeTurn();
+			console.log(turn);
 		}
 	});
 	function resetTurn() {
 		clickedCell = null;
 		chosenPiece = null;
 		removeHighlights();
+	}
+	function changeTurn() {
+		turn = turn === 'white' ? 'black' : 'white';
 	}
 	function removeHighlights() {
 		$('.highlight-moves').removeClass('highlight-moves');

@@ -26,7 +26,7 @@ class BoardState {
 				new Pawn(1, 4, 'black'),
 				new Pawn(1, 5, 'black'),
 				new Pawn(1, 6, 'black'),
-				new Pawn(1, 7, 'black')
+				new Rook(1, 7, 'black')
 			],
 			new Array(8),
 			new Array(8),
