@@ -6,7 +6,9 @@ export default class HelperFunctions {
 	}
 	static highlightMoves(potentialMoves) {
 		potentialMoves.forEach((potentialMove) => {
-			document.getElementById(`${potentialMove.row}${potentialMove.col}`).classList.add('highlight-moves');
+			if (this.isOnBoard(potentialMove.row, potentialMove.col)) {
+				document.getElementById(`${potentialMove.row}${potentialMove.col}`).classList.add('highlight-moves');
+			}
 		});
 	}
 	static isEnemy(row, col, color) {
@@ -41,5 +43,8 @@ export default class HelperFunctions {
 		const imgLocation = document.getElementById(`${piece.row}${piece.col}`).innerHTML;
 		document.getElementById(`${piece.row}${piece.col}`).innerHTML = '';
 		document.getElementById(`${trgtRow}${trgtCol}`).innerHTML = imgLocation;
+	}
+	static isOnBoard(row, col) {
+		return document.getElementById(`${row}${col}`);
 	}
 }
