@@ -24,7 +24,7 @@ class BoardState {
 				new Pawn(1, 2, 'black'),
 				new Pawn(1, 3, 'black'),
 				new Pawn(1, 4, 'black'),
-				new Bishop(1, 5, 'black'),
+				new Pawn(1, 5, 'black'),
 				new Pawn(1, 6, 'black'),
 				new Pawn(1, 7, 'black')
 			],
@@ -37,8 +37,8 @@ class BoardState {
 				new Pawn(6, 1, 'white'),
 				new Pawn(6, 2, 'white'),
 				new Pawn(6, 3, 'white'),
-				new Bishop(6, 4, 'white'),
-				new Bishop(6, 5, 'white'),
+				new Pawn(6, 4, 'white'),
+				new Pawn(6, 5, 'white'),
 				new Pawn(6, 6, 'white'),
 				new Pawn(6, 7, 'white')
 			],

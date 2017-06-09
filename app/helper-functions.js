@@ -2,7 +2,7 @@ import BoardState from './boardstate';
 
 export default class HelperFunctions {
 	static isEmpty(row, col) {
-		return !(BoardState.state[row][col]);
+		return this.isOnBoard(row, col) && !(BoardState.state[row][col]);
 	}
 	static highlightMoves(potentialMoves) {
 		potentialMoves.forEach((potentialMove) => {
@@ -13,7 +13,7 @@ export default class HelperFunctions {
 	}
 	static isEnemy(row, col, color) {
 		const foo = BoardState.state[row][col];
-		return foo.color !== color;
+		return this.isOnBoard(row, col) && foo.color !== color;
 	}
 	static addToPotentialMoves(potentialMoves, row, col) {
 		potentialMoves.push({
@@ -36,8 +36,7 @@ export default class HelperFunctions {
 	static movePieceBS(piece, trgtRow, trgtCol) {
 		BoardState.state[piece.row][piece.col] = null;
 		BoardState.state[trgtRow][trgtCol] = piece;
-		piece.row = trgtRow;
-		piece.col = trgtCol;
+		piece.updateCoords(trgtRow, trgtCol);
 	}
 	static movePieceDOM(piece, trgtRow, trgtCol) {
 		const imgLocation = document.getElementById(`${piece.row}${piece.col}`).innerHTML;
@@ -45,6 +44,6 @@ export default class HelperFunctions {
 		document.getElementById(`${trgtRow}${trgtCol}`).innerHTML = imgLocation;
 	}
 	static isOnBoard(row, col) {
-		return document.getElementById(`${row}${col}`);
+		return row < 8 && row >= 0 && col >= 0 && col < 8;
 	}
 }

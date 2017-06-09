@@ -6,9 +6,6 @@ export default class Bishop extends Piece {
 		super(row, col, color);
 		this.image = color === 'white' ? '2657' : '265D';
 	}
-	getTargetCoordinates() {
-		this.genCoordinates();
-	}
 	genCoordinates() {
 		const potentialMoves = [];
 		for (let i = this.row + 1; i <= 7; i++) {
@@ -51,6 +48,6 @@ export default class Bishop extends Piece {
 				break;
 			}
 		}
-		HelperFunctions.highlightMoves(potentialMoves);
+		return potentialMoves;
 	}
 }

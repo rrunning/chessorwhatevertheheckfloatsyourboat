@@ -4,7 +4,8 @@ export default class Piece {
 		this.col = col;
 		this.color = color;
 	}
-	getTargetCoordinates() {
-		console.log("This hasn't been set up yet NOOB!!");
+	updateCoords(x, y) {
+		this.row = x;
+		this.col = y;
 	}
 }

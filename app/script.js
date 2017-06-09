@@ -50,8 +50,8 @@ const $ = require('jquery');
 		if (!chosenPiece) {
 			chosenPiece = BoardState.state[$(this).attr('id')[0]][$(this).attr('id')[1]];
 			if (chosenPiece.color === turn) {
-				chosenPiece.getTargetCoordinates();
 				$(this).addClass('lighty-uppy-piece');
+				HelperFunctions.highlightMoves(chosenPiece.genCoordinates());
 			} else {
 				resetTurn();
 			}
