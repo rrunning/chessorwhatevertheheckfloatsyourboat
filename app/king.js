@@ -1,8 +1,34 @@
 import Piece from './piece';
+import HelperFunctions from './helper-functions';
+
 
 export default class King extends Piece {
 	constructor(row, col, color) {
 		super(row, col, color);
 		this.image = color === 'white' ? '2654' : '265A';
+	}
+	genCoordinates() {
+		const potentialMoves = [];
+		this.checkRows(this.row - 1, this.col, potentialMoves, this.color);
+		this.checkRows(this.row + 1, this.col, potentialMoves, this.color);
+		this.checkKingRow(this.row, this.col - 1, potentialMoves, this.color);
+		this.checkKingRow(this.row, this.col + 1, potentialMoves, this.color);
+		return potentialMoves;
+	}
+	checkRows(row, col, potentialMoves, color) {
+		for (let i = col - 1; i <= col + 1; i++) {
+			if (HelperFunctions.isEmpty(row, col)) {
+				HelperFunctions.addToPotentialMoves(potentialMoves, row, i);
+			} else if (HelperFunctions.isEnemy(row, col, color)) {
+				HelperFunctions.addToPotentialMoves(potentialMoves, row, i);
+			} else {
+				break;
+			}
+		}
+	}
+	checkKingRow(row, col, potentialMoves, color) {
+		if (HelperFunctions.isEmpty(row, col) || HelperFunctions.isEnemy(row, col, color)) {
+			HelperFunctions.addToPotentialMoves(potentialMoves, row, col);
+		}
 	}
 }

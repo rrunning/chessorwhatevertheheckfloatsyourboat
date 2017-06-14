@@ -12,8 +12,10 @@ export default class HelperFunctions {
 		});
 	}
 	static isEnemy(row, col, color) {
-		const foo = BoardState.state[row][col];
-		return this.isOnBoard(row, col) && foo.color !== color;
+		if (this.isOnBoard(row, col)) {
+			const foo = BoardState.state[row][col];
+			return foo.color !== color;
+		}
 	}
 	static addToPotentialMoves(potentialMoves, row, col) {
 		potentialMoves.push({

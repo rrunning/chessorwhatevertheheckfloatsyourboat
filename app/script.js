@@ -43,9 +43,30 @@ const $ = require('jquery');
 	}
 	function setup() {
 		buildBoard();
-		console.log(BoardState.state);
 	}
 	setup();
+	$('document').ready(function () {
+		$('#63').trigger('click');
+		$('#43').click();
+		$('#13').click();
+		$('#33').click();
+		$('#64').click();
+		$('#44').click();
+		$('#14').click();
+		$('#34').click();
+		$('#65').click();
+		$('#45').click();
+		$('#15').click();
+		$('#35').click();
+		$('#73').click();
+		$('#46').click();
+		$('#03').click();
+		$('#36').click();
+		$('#75').click();
+		$('#42').click();
+		$('#05').click();
+		$('#32').click();
+	})
 
 	$('.column').click(function () {
 		if (!chosenPiece) {
