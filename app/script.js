@@ -45,6 +45,7 @@ const $ = require('jquery');
 		buildBoard();
 	}
 	setup();
+	// This block of code needs to be deleted. It's just for debugging.
 	$('document').ready(function () {
 		$('#63').trigger('click');
 		$('#43').click();
@@ -66,7 +67,8 @@ const $ = require('jquery');
 		$('#42').click();
 		$('#05').click();
 		$('#32').click();
-	})
+	});
+	// end of debugging code.
 
 	$('.column').click(function () {
 		if (!chosenPiece) {
