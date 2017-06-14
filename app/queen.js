@@ -15,8 +15,4 @@ export default class Queen extends Piece {
 		const potentialMoves = bTargets.concat(rTargets);
 		return potentialMoves;
 	}
-
-	// combineTargets(bTargets, rTargets) {
-	// 	return bTargets.concat(rTargets);
-	// }
 }
