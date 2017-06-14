@@ -1,5 +1,6 @@
 import BoardState from './boardstate';
 import HelperFunctions from './helper-functions';
+import Pawn from './pawn';
 
 require('./chess.css');
 require('./piece');
@@ -65,6 +66,9 @@ const $ = require('jquery');
 		}
 	});
 	function resetTurn() {
+		if (chosenPiece instanceof Pawn) {
+			chosenPiece.firstTurn = false;
+		}
 		clickedCell = null;
 		chosenPiece = null;
 		removeHighlights();

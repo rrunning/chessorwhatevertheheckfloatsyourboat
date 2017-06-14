@@ -5,6 +5,7 @@ export default class Pawn extends Piece {
 	constructor(row, col, color) {
 		super(row, col, color);
 		this.image = color === 'white' ? '2659' : '265F';
+		this.firstTurn = true;
 	}
 
 	genCoordinates() {
@@ -21,6 +22,10 @@ export default class Pawn extends Piece {
 	checkForward(row, col, potentialMoves) {
 		if (HelperFunctions.isEmpty(row, col)) {
 			HelperFunctions.addToPotentialMoves(potentialMoves, row, col);
+		}
+		if (this.firstTurn && HelperFunctions.isEmpty(row, col)) {
+			const rowTwo = this.color === 'white' ? this.row - 2 : this.row + 2;
+			HelperFunctions.addToPotentialMoves(potentialMoves, rowTwo, col);
 		}
 	}
 	checkEnemy(row, col, potentialMoves, color) {
