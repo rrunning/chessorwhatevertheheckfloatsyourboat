@@ -17,12 +17,10 @@ export default class King extends Piece {
 	}
 	checkRows(row, col, potentialMoves, color) {
 		for (let i = col - 1; i <= col + 1; i++) {
-			if (HelperFunctions.isEmpty(row, col)) {
+			if (HelperFunctions.isEmpty(row, i)) {
 				HelperFunctions.addToPotentialMoves(potentialMoves, row, i);
-			} else if (HelperFunctions.isEnemy(row, col, color)) {
+			} else if (HelperFunctions.isEnemy(row, i, color)) {
 				HelperFunctions.addToPotentialMoves(potentialMoves, row, i);
-			} else {
-				break;
 			}
 		}
 	}

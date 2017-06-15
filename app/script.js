@@ -67,6 +67,10 @@ const $ = require('jquery');
 		$('#42').click();
 		$('#05').click();
 		$('#32').click();
+		$('#74').click();
+		$('#65').click();
+		$('#04').click();
+		$('#15').click();
 	});
 	// end of debugging code.
 
