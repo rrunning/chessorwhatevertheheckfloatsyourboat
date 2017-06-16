@@ -86,11 +86,15 @@ const $ = require('jquery');
 		} else {
 			// chosenPiece should be defined and we're now checking for a space to move to.
 			clickedCell = $(this).attr('id');
+			if (chosenPiece instanceof King) {
+				checkCheck(chosenPiece.row, chosenPiece.col, allMoves)
+			}
 			HelperFunctions.movePiece(chosenPiece, Number(clickedCell[0]), Number(clickedCell[1]));
 			resetTurn();
 			changeTurn();
 		}
 	});
+
 	function resetTurn() {
 		if (chosenPiece instanceof Pawn) {
 			chosenPiece.firstTurn = false;
@@ -99,11 +103,31 @@ const $ = require('jquery');
 		chosenPiece = null;
 		removeHighlights();
 	}
+
 	function changeTurn() {
 		turn = turn === 'white' ? 'black' : 'white';
 	}
+
 	function removeHighlights() {
 		$('.highlight-moves').removeClass('highlight-moves');
 		$('.lighty-uppy-piece').removeClass('lighty-uppy-piece');
 	}
+
+	function checkCheck(row, col, allMoves) {
+		return !!allMoves.filter((p, c) => {
+			if (p) return true;
+			return c.row === row && c.col === col;
+		});
+	}
+
+	const allMoves = () => {
+		// concatenate all the potential moves arrays
+		for (let i = 0; i < BoardState.state.length; i++) {
+			for (let j = 0; j < BoardState.length; j++) {
+				if (BoardState[i][j].color !== this.color) {
+					allMoves.push(BoardState[i][j].genCoordinates());
+				}
+			}
+		}
+	};
 })();
