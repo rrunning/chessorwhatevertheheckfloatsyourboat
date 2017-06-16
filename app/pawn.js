@@ -20,11 +20,11 @@ export default class Pawn extends Piece {
 		return potentialMoves;
 	}
 	checkForward(row, col, potentialMoves) {
+		const rowTwo = this.color === 'white' ? this.row - 2 : this.row + 2;
 		if (HelperFunctions.isEmpty(row, col)) {
 			HelperFunctions.addToPotentialMoves(potentialMoves, row, col);
 		}
-		if (this.firstTurn && HelperFunctions.isEmpty(row, col)) {
-			const rowTwo = this.color === 'white' ? this.row - 2 : this.row + 2;
+		if (this.firstTurn && HelperFunctions.isEmpty(rowTwo, col)) {
 			HelperFunctions.addToPotentialMoves(potentialMoves, rowTwo, col);
 		}
 	}
