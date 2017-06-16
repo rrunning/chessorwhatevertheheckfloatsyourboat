@@ -89,7 +89,6 @@ const $ = require('jquery');
 			HelperFunctions.movePiece(chosenPiece, Number(clickedCell[0]), Number(clickedCell[1]));
 			resetTurn();
 			changeTurn();
-			console.log(turn);
 		}
 	});
 	function resetTurn() {

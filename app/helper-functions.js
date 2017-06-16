@@ -30,7 +30,6 @@ export default class HelperFunctions {
 		if (this.isHighlighted(trgtRow, trgtCol)) {
 			this.movePieceDOM(piece, trgtRow, trgtCol);
 			this.movePieceBS(piece, trgtRow, trgtCol);
-			console.log(BoardState.state);
 		} else {
 			alert("This doesn't work");
 		}
