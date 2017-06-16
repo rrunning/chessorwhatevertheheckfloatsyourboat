@@ -1,6 +1,7 @@
 import BoardState from './boardstate';
 import HelperFunctions from './helper-functions';
 import Pawn from './pawn';
+import King from './king';
 
 require('./chess.css');
 require('./piece');
@@ -87,7 +88,7 @@ const $ = require('jquery');
 			// chosenPiece should be defined and we're now checking for a space to move to.
 			clickedCell = $(this).attr('id');
 			if (chosenPiece instanceof King) {
-				checkCheck(chosenPiece.row, chosenPiece.col, allMoves)
+				checkCheck(chosenPiece.row, chosenPiece.col, allMoves);
 			}
 			HelperFunctions.movePiece(chosenPiece, Number(clickedCell[0]), Number(clickedCell[1]));
 			resetTurn();
@@ -121,7 +122,6 @@ const $ = require('jquery');
 	}
 
 	const allMoves = () => {
-		// concatenate all the potential moves arrays
 		for (let i = 0; i < BoardState.state.length; i++) {
 			for (let j = 0; j < BoardState.length; j++) {
 				if (BoardState[i][j].color !== this.color) {
