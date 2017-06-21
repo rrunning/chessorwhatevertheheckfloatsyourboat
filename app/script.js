@@ -47,7 +47,7 @@ const $ = require('jquery');
 	}
 	setup();
 	// This block of code needs to be deleted. It's just for debugging.
-	$('document').ready(function () {
+	$('document').ready(() => {
 		$('#63').trigger('click');
 		$('#43').click();
 		$('#13').click();
@@ -64,14 +64,14 @@ const $ = require('jquery');
 		$('#46').click();
 		$('#03').click();
 		$('#36').click();
-		$('#75').click();
-		$('#42').click();
-		$('#05').click();
-		$('#32').click();
-		$('#74').click();
-		$('#65').click();
-		$('#04').click();
-		$('#15').click();
+		// $('#75').click();
+		// $('#42').click();
+		// $('#05').click();
+		// $('#32').click();
+		// $('#74').click();
+		// $('#65').click();
+		// $('#04').click();
+		// $('#15').click();
 	});
 	// end of debugging code.
 
@@ -88,7 +88,7 @@ const $ = require('jquery');
 			// chosenPiece should be defined and we're now checking for a space to move to.
 			clickedCell = $(this).attr('id');
 			if (chosenPiece instanceof King) {
-				checkCheck(chosenPiece.row, chosenPiece.col, allMoves);
+				King.wouldBeInCheck(chosenPiece.row, chosenPiece.col, turn);
 			}
 			HelperFunctions.movePiece(chosenPiece, Number(clickedCell[0]), Number(clickedCell[1]));
 			resetTurn();
@@ -113,21 +113,4 @@ const $ = require('jquery');
 		$('.highlight-moves').removeClass('highlight-moves');
 		$('.lighty-uppy-piece').removeClass('lighty-uppy-piece');
 	}
-
-	function checkCheck(row, col, allMoves) {
-		return !!allMoves.filter((p, c) => {
-			if (p) return true;
-			return c.row === row && c.col === col;
-		});
-	}
-
-	const allMoves = () => {
-		for (let i = 0; i < BoardState.state.length; i++) {
-			for (let j = 0; j < BoardState.length; j++) {
-				if (BoardState[i][j].color !== this.color) {
-					allMoves.push(BoardState[i][j].genCoordinates());
-				}
-			}
-		}
-	};
 })();

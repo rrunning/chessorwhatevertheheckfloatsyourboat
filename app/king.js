@@ -1,5 +1,6 @@
 import Piece from './piece';
 import HelperFunctions from './helper-functions';
+import BoardState from './boardstate';
 
 
 export default class King extends Piece {
@@ -28,5 +29,17 @@ export default class King extends Piece {
 		if (HelperFunctions.isEmpty(row, col) || HelperFunctions.isEnemy(row, col, color)) {
 			HelperFunctions.addToPotentialMoves(potentialMoves, row, col);
 		}
+	}
+	static wouldBeInCheck(row, col, turn) {
+		let targets = [];
+		BoardState.state.forEach((currRow) => {
+			currRow.forEach((cell) => {
+				if (cell && cell.color !== turn) targets = targets.concat(cell.genCoordinates(true));
+			});
+			console.log(targets);
+		});
+		return targets.filter((p, c) => {
+			return c.row === row && c.col === col;
+		}).length;
 	}
 }
