@@ -36,10 +36,8 @@ export default class King extends Piece {
 			currRow.forEach((cell) => {
 				if (cell && cell.color !== turn) targets = targets.concat(cell.genCoordinates(true));
 			});
-			console.log(targets);
 		});
-		return targets.filter((p, c) => {
-			return c.row === row && c.col === col;
-		}).length;
+		return targets.filter(c => c.row === row && c.col === col);
+		// need to compare and filter the targets array against the potentialMoves array for the King.
 	}
 }
