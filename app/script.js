@@ -86,10 +86,10 @@ const $ = require('jquery');
 			}
 		} else {
 			// chosenPiece should be defined and we're now checking for a space to move to.
+			// if (chosenPiece instanceof King) {
+			// 	King.wouldBeInCheck(chosenPiece.row, chosenPiece.col, turn, allMoves, kingMoves);
+			// }
 			clickedCell = $(this).attr('id');
-			if (chosenPiece instanceof King) {
-				King.wouldBeInCheck(chosenPiece.row, chosenPiece.col, turn);
-			}
 			HelperFunctions.movePiece(chosenPiece, Number(clickedCell[0]), Number(clickedCell[1]));
 			resetTurn();
 			changeTurn();
@@ -113,4 +113,5 @@ const $ = require('jquery');
 		$('.highlight-moves').removeClass('highlight-moves');
 		$('.lighty-uppy-piece').removeClass('lighty-uppy-piece');
 	}
+
 })();
