@@ -40,25 +40,27 @@ export default class King extends Piece {
 		// 		if (cell && cell.color !== turn) targets = targets.concat(cell.genCoordinates());
 		// 	});
 		// });
-		targets = this.getOtherMoves(row, col);
-		const filteredTargets = potentialMoves.filter(e =>
-			!targets.reduce((p, c) =>
-				p || (c.row === e.row && c.col === e.col, false))
-		);
+		targets = this.getOtherMoves();
+		const filteredTargets = potentialMoves.filter((e) => {
+			return targets.findIndex((target) => {
+				return target.row === e.row && target.col === e.col;
+			}) === -1;
+		});
 		return filteredTargets;
 		// need to compare and filter the targets array against the potentialMoves array for the King.
 	}
 	getOtherMoves() {
-		const allMoves = [];
+		let allMoves = [];
 		for (let i = 0; i < BoardState.state.length; i++) {
 			for (let j = 0; j < BoardState.state.length; j++) {
 				if (HelperFunctions.isEmpty(i, j)) {
 					continue;
 				} else if (BoardState.state[i][j].color !== this.color) {
-					allMoves.push(BoardState.state[i][j].genCoordinates(true));
+					allMoves = allMoves.concat(BoardState.state[i][j].genCoordinates(true));
 				}
 			}
 		}
+		console.log(allMoves);
 		return allMoves;
 	}
 }
