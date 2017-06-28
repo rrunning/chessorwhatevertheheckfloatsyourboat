@@ -1,7 +1,7 @@
 import BoardState from './boardstate';
 import HelperFunctions from './helper-functions';
 import Pawn from './pawn';
-import King from './king';
+// import King from './king';
 
 require('./chess.css');
 require('./piece');
@@ -113,5 +113,4 @@ const $ = require('jquery');
 		$('.highlight-moves').removeClass('highlight-moves');
 		$('.lighty-uppy-piece').removeClass('lighty-uppy-piece');
 	}
-
 })();
