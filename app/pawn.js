@@ -8,15 +8,26 @@ export default class Pawn extends Piece {
 		this.firstTurn = true;
 	}
 
-	genCoordinates() {
+	genCoordinates(forCheck) {
 		const potentialMoves = [];
-		const row = this.color === 'white' ? this.row - 1 : this.row + 1;
-		const colRight = this.col + 1;
-		const colLeft = this.col - 1;
-		const color = this.color;
-		this.checkForward(row, this.col, potentialMoves);
-		this.checkEnemy(row, colRight, potentialMoves, color);
-		this.checkEnemy(row, colLeft, potentialMoves, color);
+		if (forCheck) {
+			const row = this.color === 'white' ? this.row - 1 : this.row + 1;
+			const colRight = this.col + 1;
+			const colLeft = this.col - 1;
+			const color = this.color;
+			this.checkEnemy(row, colRight, potentialMoves, color);
+			this.checkEnemy(row, colLeft, potentialMoves, color);
+			this.checkAlly(row, colRight, potentialMoves, color);
+			this.checkAlly(row, colLeft, potentialMoves, color);
+		} else {
+			const row = this.color === 'white' ? this.row - 1 : this.row + 1;
+			const colRight = this.col + 1;
+			const colLeft = this.col - 1;
+			const color = this.color;
+			this.checkForward(row, this.col, potentialMoves);
+			this.checkEnemy(row, colRight, potentialMoves, color);
+			this.checkEnemy(row, colLeft, potentialMoves, color);
+		}
 		return potentialMoves;
 	}
 	checkForward(row, col, potentialMoves) {
@@ -31,6 +42,13 @@ export default class Pawn extends Piece {
 	checkEnemy(row, col, potentialMoves, color) {
 		if (!HelperFunctions.isEmpty(row, col)) {
 			if (HelperFunctions.isEnemy(row, col, color)) {
+				HelperFunctions.addToPotentialMoves(potentialMoves, row, col);
+			}
+		}
+	}
+	checkAlly(row, col, potentialMoves, color) {
+		if (!HelperFunctions.isEmpty(row, col)) {
+			if (HelperFunctions.isAlly(row, col, color)) {
 				HelperFunctions.addToPotentialMoves(potentialMoves, row, col);
 			}
 		}

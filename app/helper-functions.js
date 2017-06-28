@@ -17,6 +17,12 @@ export default class HelperFunctions {
 			return foo.color !== color;
 		}
 	}
+	static isAlly(row, col, color) {
+		if (this.isOnBoard(row, col)) {
+			const foo = BoardState.state[row][col];
+			return foo.color === color;
+		}
+	}
 	static addToPotentialMoves(potentialMoves, row, col) {
 		potentialMoves.push({
 			row,
