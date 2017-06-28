@@ -35,11 +35,6 @@ export default class King extends Piece {
 	}
 	wouldBeInCheck(turn, potentialMoves, row, col) {
 		let targets = [];
-		// BoardState.state.forEach((currRow) => {
-		// 	currRow.forEach((cell) => {
-		// 		if (cell && cell.color !== turn) targets = targets.concat(cell.genCoordinates());
-		// 	});
-		// });
 		targets = this.getOtherMoves();
 		const filteredTargets = potentialMoves.filter((e) => {
 			return targets.findIndex((target) => {
@@ -47,7 +42,6 @@ export default class King extends Piece {
 			}) === -1;
 		});
 		return filteredTargets;
-		// need to compare and filter the targets array against the potentialMoves array for the King.
 	}
 	getOtherMoves() {
 		let allMoves = [];
@@ -60,7 +54,6 @@ export default class King extends Piece {
 				}
 			}
 		}
-		console.log(allMoves);
 		return allMoves;
 	}
 }
