@@ -1,4 +1,5 @@
 import BoardState from './boardstate';
+import King from './king';
 
 export default class HelperFunctions {
 	static isEmpty(row, col) {
@@ -11,17 +12,22 @@ export default class HelperFunctions {
 			}
 		});
 	}
+	static isKing(row, col) {
+		return BoardState.state[row][col] instanceof King;
+	}
 	static isEnemy(row, col, color) {
+		let foo = '';
 		if (this.isOnBoard(row, col)) {
-			const foo = BoardState.state[row][col];
-			return foo.color !== color;
+			foo = BoardState.state[row][col];
 		}
+		return foo.color !== color;
 	}
 	static isAlly(row, col, color) {
+		let foo = '';
 		if (this.isOnBoard(row, col)) {
-			const foo = BoardState.state[row][col];
-			return foo.color === color;
+			foo = BoardState.state[row][col];
 		}
+		return foo.color === color;
 	}
 	static addToPotentialMoves(potentialMoves, row, col) {
 		potentialMoves.push({

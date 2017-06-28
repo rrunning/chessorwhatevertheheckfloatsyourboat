@@ -50,8 +50,8 @@ const $ = require('jquery');
 	$('document').ready(() => {
 		$('#63').trigger('click');
 		$('#43').click();
-		$('#13').click();
-		$('#33').click();
+		$('#10').click();
+		$('#20').click();
 		$('#64').click();
 		$('#44').click();
 		$('#14').click();
@@ -69,13 +69,13 @@ const $ = require('jquery');
 		$('#05').click();
 		$('#32').click();
 		$('#74').click();
-		$('#65').click();
+		$('#64').click();
 		$('#04').click();
 		$('#15').click();
-		$('#65').click();
-		$('#55').click();
-		$('#36').click();
-		$('#46').click();
+		$('#64').click();
+		$('#54').click();
+		// $('#36').click();
+		// $('#46').click();
 	});
 	// end of debugging code.
 

@@ -9,7 +9,7 @@ export default class Queen extends Piece {
 		this.image = color === 'white' ? '2655' : '265B';
 	}
 
-	genCoordinates() {
+	genCoordinates(forCheck) {
 		const bTargets = Bishop.prototype.genCoordinates.call(this);
 		const rTargets = Rook.prototype.genCoordinates.call(this);
 		const potentialMoves = bTargets.concat(rTargets);
