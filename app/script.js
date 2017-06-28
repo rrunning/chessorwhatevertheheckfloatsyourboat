@@ -64,14 +64,18 @@ const $ = require('jquery');
 		$('#46').click();
 		$('#03').click();
 		$('#36').click();
-		// $('#75').click();
-		// $('#42').click();
-		// $('#05').click();
-		// $('#32').click();
-		// $('#74').click();
-		// $('#65').click();
-		// $('#04').click();
-		// $('#15').click();
+		$('#75').click();
+		$('#42').click();
+		$('#05').click();
+		$('#32').click();
+		$('#74').click();
+		$('#65').click();
+		$('#04').click();
+		$('#15').click();
+		$('#65').click();
+		$('#55').click();
+		$('#36').click();
+		$('#46').click();
 	});
 	// end of debugging code.
 
