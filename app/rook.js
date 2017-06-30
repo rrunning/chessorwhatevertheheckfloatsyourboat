@@ -14,7 +14,7 @@ export default class Rook extends Piece {
 					HelperFunctions.addToPotentialMoves(potentialMoves, i, this.col);
 				} else if (HelperFunctions.isEnemy(i, this.col, this.color) && HelperFunctions.isKing(i, this.col)) {
 					HelperFunctions.addToPotentialMoves(potentialMoves, i, this.col);
-				} else if (HelperFunctions.isEnemy(i, this.col, this.color)) {
+				} else if (HelperFunctions.isAlly(i, this.col, this.color)) {
 					HelperFunctions.addToPotentialMoves(potentialMoves, i, this.col);
 					break;
 				} else {
@@ -26,7 +26,7 @@ export default class Rook extends Piece {
 					HelperFunctions.addToPotentialMoves(potentialMoves, i, this.col);
 				} else if (HelperFunctions.isEnemy(i, this.col, this.color) && HelperFunctions.isKing(i, this.col)) {
 					HelperFunctions.addToPotentialMoves(potentialMoves, i, this.col);
-				} else if (HelperFunctions.isEnemy(i, this.col, this.color)) {
+				} else if (HelperFunctions.isAlly(i, this.col, this.color)) {
 					HelperFunctions.addToPotentialMoves(potentialMoves, i, this.col);
 					break;
 				} else {
@@ -41,7 +41,7 @@ export default class Rook extends Piece {
 						row: this.row,
 						col: i
 					});
-				} else if (HelperFunctions.isEnemy(this.row, i, this.color)) {
+				} else if (HelperFunctions.isAlly(this.row, i, this.color)) {
 					potentialMoves.push({
 						row: this.row,
 						col: i
@@ -56,7 +56,7 @@ export default class Rook extends Piece {
 					HelperFunctions.addToPotentialMoves(potentialMoves, this.row, i);
 				} else if (HelperFunctions.isEnemy(this.row, i, this.color) && HelperFunctions.isKing(this.row, i)) {
 					HelperFunctions.addToPotentialMoves(potentialMoves, this.row, i);
-				} else if (HelperFunctions.isEnemy(this.row, i, this.color)) {
+				} else if (HelperFunctions.isAlly(this.row, i, this.color)) {
 					HelperFunctions.addToPotentialMoves(potentialMoves, this.row, i);
 					break;
 				} else {
