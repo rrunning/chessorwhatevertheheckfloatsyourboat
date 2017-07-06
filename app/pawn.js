@@ -15,8 +15,8 @@ export default class Pawn extends Piece {
 			const colRight = this.col + 1;
 			const colLeft = this.col - 1;
 			const color = this.color;
-			this.checkEnemy(row, colRight, potentialMoves, color);
-			this.checkEnemy(row, colLeft, potentialMoves, color);
+			this.takingSquareCheck(row, colRight, potentialMoves, color);
+			this.takingSquareCheck(row, colLeft, potentialMoves, color);
 			this.checkAlly(row, colRight, potentialMoves, color);
 			this.checkAlly(row, colLeft, potentialMoves, color);
 		} else {
@@ -51,6 +51,11 @@ export default class Pawn extends Piece {
 			if (HelperFunctions.isAlly(row, col, color)) {
 				HelperFunctions.addToPotentialMoves(potentialMoves, row, col);
 			}
+		}
+	}
+	takingSquareCheck(row, col, potentialMoves) {
+		if (HelperFunctions.isEmpty(row, col)) {
+			HelperFunctions.addToPotentialMoves(potentialMoves, row, col);
 		}
 	}
 }
