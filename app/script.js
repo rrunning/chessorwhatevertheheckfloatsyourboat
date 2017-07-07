@@ -46,39 +46,6 @@ const $ = require('jquery');
 		buildBoard();
 	}
 	setup();
-	// This block of code needs to be deleted. It's just for debugging.
-	$('document').ready(() => {
-		$('#64').trigger('click');
-		$('#44').click();
-		$('#13').click();
-		$('#33').click();
-		$('#74').click();
-		$('#64').click();
-		$('#02').click();
-		$('#46').click();
-		$('#64').click();
-		$('#54').click();
-		$('#06').click();
-		$('#25').click();
-		$('#54').click();
-		$('#45').click();
-		$('#01').click();
-		$('#22').click();
-		$('#67').click();
-		$('#47').click();
-		$('#16').click();
-		$('#36').click();
-		$('#47').click();
-		$('#36').click();
-		$('#07').click();
-		$('#06').click();
-		$('#36').click();
-		$('#26').click();
-		$('#03').click();
-		$('#13').click();
-	});
-	// end of debugging code.
-
 	$('.column').click(function () {
 		if (!chosenPiece) {
 			chosenPiece = BoardState.state[$(this).attr('id')[0]][$(this).attr('id')[1]];
@@ -89,14 +56,11 @@ const $ = require('jquery');
 				resetTurn();
 			}
 		} else {
-			// chosenPiece should be defined and we're now checking for a space to move to.
-			// if (chosenPiece instanceof King) {
-			// 	King.wouldBeInCheck(chosenPiece.row, chosenPiece.col, turn, allMoves, kingMoves);
-			// }
 			clickedCell = $(this).attr('id');
-			HelperFunctions.movePiece(chosenPiece, Number(clickedCell[0]), Number(clickedCell[1]));
-			resetTurn();
-			changeTurn();
+			if (HelperFunctions.movePiece(chosenPiece, Number(clickedCell[0]), Number(clickedCell[1]))) {
+				resetTurn();
+				changeTurn();
+			} else { resetTurn(); }
 		}
 	});
 

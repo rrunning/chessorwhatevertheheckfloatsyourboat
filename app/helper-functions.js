@@ -39,11 +39,14 @@ export default class HelperFunctions {
 		return document.getElementById(`${targetRow}${targetCol}`).classList.contains('highlight-moves');
 	}
 	static movePiece(piece, trgtRow, trgtCol) {
+		let isMoved = false;
 		if (this.isHighlighted(trgtRow, trgtCol)) {
 			this.movePieceDOM(piece, trgtRow, trgtCol);
 			this.movePieceBS(piece, trgtRow, trgtCol);
+			return isMoved = true;
 		} else {
 			alert("This doesn't work");
+			return isMoved = false;
 		}
 	}
 	static movePieceBS(piece, trgtRow, trgtCol) {
