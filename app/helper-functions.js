@@ -45,7 +45,6 @@ export default class HelperFunctions {
 			this.movePieceBS(piece, trgtRow, trgtCol);
 			return isMoved = true;
 		} else {
-			alert("This doesn't work");
 			return isMoved = false;
 		}
 	}

@@ -6,17 +6,15 @@ div {
 .row {
     width: 80vw;
     height: 10vw;
-    background-color: #999999;
-    border-color: #fff;
+    background-color: #907a70;
 }
 .column {
     width: 10vw;
     height: 10vw;
-    /*background-color: #bada55;*/
     display: inline-block;
 }
 .white-cell {
-	background-color: #eeeeee;
+	background-color: #707020;
 }
 #master-div {
 	width: 80vw;

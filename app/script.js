@@ -57,13 +57,22 @@ const $ = require('jquery');
 			}
 		} else {
 			clickedCell = $(this).attr('id');
-			if (HelperFunctions.movePiece(chosenPiece, Number(clickedCell[0]), Number(clickedCell[1]))) {
-				if (chosenPiece instanceof Pawn) {
-					chosenPiece.firstTurn = false;
+			if ($(this).hasClass('highlight-moves')) {
+				if (HelperFunctions.movePiece(chosenPiece, Number(clickedCell[0]), Number(clickedCell[1]))) {
+					if (chosenPiece instanceof Pawn) {
+						chosenPiece.firstTurn = false;
+					}
+					resetTurn();
+					changeTurn();
+				} else { resetTurn(); }
+			} else {
+				removeHighlights();
+				chosenPiece = BoardState.state[$(this).attr('id')[0]][$(this).attr('id')[1]];
+				if (chosenPiece) {
+					$(this).addClass('lighty-uppy-piece');
+					HelperFunctions.highlightMoves(chosenPiece.genCoordinates());
 				}
-				resetTurn();
-				changeTurn();
-			} else { resetTurn(); }
+			}
 		}
 	});
 
