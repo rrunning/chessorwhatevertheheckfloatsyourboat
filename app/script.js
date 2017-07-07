@@ -58,6 +58,9 @@ const $ = require('jquery');
 		} else {
 			clickedCell = $(this).attr('id');
 			if (HelperFunctions.movePiece(chosenPiece, Number(clickedCell[0]), Number(clickedCell[1]))) {
+				if (chosenPiece instanceof Pawn) {
+					chosenPiece.firstTurn = false;
+				}
 				resetTurn();
 				changeTurn();
 			} else { resetTurn(); }
@@ -65,9 +68,6 @@ const $ = require('jquery');
 	});
 
 	function resetTurn() {
-		if (chosenPiece instanceof Pawn) {
-			chosenPiece.firstTurn = false;
-		}
 		clickedCell = null;
 		chosenPiece = null;
 		removeHighlights();
